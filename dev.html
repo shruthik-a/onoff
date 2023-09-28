@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .onoff-button {
+            width: 100px;
+            height: 40px;
+            border: 1px solid #999;
+            border-radius: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 5px;
+            transition: background-color 0.2s; 
+        }
+        .onoff-label {
+            width: 40px;
+            height: 30px;
+            background-color: #fff;
+            border: 1px solid #999;
+            border-radius: 50%;
+            transition: transform 0.2s;
+        }
+        .onoff-text {
+            font-size: 18px;
+        }
+        .onoff-button.on {
+            background-color: #4CAF50; 
+        }
+        .onoff-button.off {
+            background-color: #F44336;
+        }
+    </style>
+</head>
+<body>
+    <div class="onoff-button off" id="toggleButton">
+        <div class="onoff-label"></div>
+        <div class="onoff-text">Off</div>
+    </div>
+
+    <script>
+        const toggleButton = document.getElementById('toggleButton');
+        let checkstate = false;
+        toggleButton.addEventListener('click', () => {
+            checkstate = !checkstate;
+            if (checkstate) {
+                toggleButton.classList.remove('off');
+                toggleButton.classList.add('on');
+                toggleButton.querySelector('.onoff-text').textContent = 'On';
+            } else {
+                toggleButton.classList.remove('on');
+                toggleButton.classList.add('off');
+                toggleButton.querySelector('.onoff-text').textContent = 'Off';
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Playback</title>
+</head>
+<body>
+    <video id="videoPlayer" controls autoplay>
+        <source src="video.mp4" type="video/mp4">
+    </video>
+    <div id="buttonContainer">
+        <button id="onButton" style="display: none;">On</button>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const videoPlayer = document.getElementById("videoPlayer");
+            const onButton = document.getElementById("onButton");
+
+            // Hide the "On" button initially
+            onButton.style.display = "none";
+
+            // Add a timeupdate event listener to the video
+            videoPlayer.addEventListener("timeupdate", function() {
+                // Check if the video has played for at least 5 seconds
+                if (videoPlayer.currentTime >= 5 && onButton.style.display === "none") {
+                    // Display the "On" button after 5 seconds
+                    onButton.style.display = "block";
+                }
+            });
+
+            // Add a click event listener to the "On" button
+            onButton.addEventListener("click", function() {
+                // Start video playback
+                videoPlayer.play();
+                onButton.style.display = "none";
+            });
+        });
+    </script>
+</body>
+</html>
+-->
